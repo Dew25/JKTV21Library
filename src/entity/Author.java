@@ -36,7 +36,7 @@ public class Author {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
+    
     @Override
     public String toString() {
         return "Author{" + "firstname=" + firstname + ", lastname=" + lastname + '}';

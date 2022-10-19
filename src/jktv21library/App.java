@@ -52,6 +52,9 @@ public class App {
             System.out.println("4. Вернуть книгу");
             System.out.println("5. Список книг");
             System.out.println("6. Список читателей");
+            System.out.println("7. Список выданных книг");
+            System.out.println("8. Изменить данные читателя");
+            System.out.println("9. Редактирование книги");
             System.out.print("Выберите номер функции: ");
             int task = scanner.nextInt();
             scanner.nextLine();
@@ -74,7 +77,7 @@ public class App {
                     break;
                 case 4:
                     System.out.println("4. Вернуть книгу");
-                    
+                    histories = historyManager.returnBook(histories);
                     break;
                 case 5:
                     System.out.println("5. Список книг");
@@ -83,6 +86,18 @@ public class App {
                 case 6:
                     System.out.println("6. Список читателей");
                     readerManager.printListReaders(readers);
+                    break;
+                case 7:
+                    System.out.println("7. Список выданных книг");
+                    historyManager.printListReadingBooks(histories);
+                    break;
+                case 8:
+                    System.out.println("8. Изменить данные читателя");
+                    readers = readerManager.changeReader(readers);
+                    break;
+                case 9:
+                    System.out.println("9. Редактирование книги");
+                    books = bookManager.changeBook(books);
                     break;
                 default:
                     System.out.println("Выберите номер функции из списка!");
