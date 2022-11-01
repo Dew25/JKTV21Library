@@ -92,7 +92,7 @@ public class BookManager {
                         System.out.print("Введите фамилию атора "+(i+1)+": ");
                         newAuthor.setLastname(scanner.nextLine());
                         books[numBookForEdit - 1].addAuthor(newAuthor);
-                    }else if(i < books[numBookForEdit - 1].getAuthors().length){
+                    }else{
                         // изменяем существующих авторов книги
                         System.out.println(i+1+"-й автор: "
                             +books[numBookForEdit - 1].getAuthors()[i].getFirstname()+" "+
