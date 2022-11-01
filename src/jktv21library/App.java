@@ -9,16 +9,8 @@ import entity.Author;
 import entity.Book;
 import entity.History;
 import entity.Reader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import managers.BookManager;
 import managers.DataManager;
 import managers.HistoryManager;
@@ -45,10 +37,10 @@ public class App {
         historyManager = new HistoryManager();
         dataManager = new DataManager();
         books = dataManager.loadBooksFromFile();
-        readers = new Reader[0];
+        readers = dataManager.loadReadersFromFile();
         histories = new History[0];
         //testAddBook();
-        testAddReader();
+        //testAddReader();
     }
     
     public void run(){
@@ -81,6 +73,7 @@ public class App {
                 case 2:
                     System.out.println("2. Добавить читателя");
                     addReader(readerManager.createReader());
+                    dataManager.saveReadersToFile(readers);
                     break;
                 case 3:
                     System.out.println("3. Выдать книгу");
