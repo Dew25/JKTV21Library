@@ -103,7 +103,7 @@ public class App {
                 case 9:
                     System.out.println("9. Редактирование книги");
                     books = bookManager.changeBook(books);
-                    bookManager.printListBooks(books);
+                    dataManager.saveBooksToFile(books);
                     break;
                 default:
                     System.out.println("Выберите номер функции из списка!");
