@@ -29,15 +29,16 @@ public class BookManager {
         int countAuthorsInBook = scanner.nextInt();
         scanner.nextLine();
         for (int i = 0; i < countAuthorsInBook; i++) {
-            book.addAuthor(createAuthor());
+            
+            book.addAuthor(createAuthor(i+1));
         }
         return book;
     }
-    private Author createAuthor() {
+    private Author createAuthor(int numberAuthor) {
         Author author = new Author();
-        System.out.println("Введите имя: ");
+        System.out.println("Введите имя "+numberAuthor+" автора: ");
         author.setFirstname(scanner.nextLine());
-        System.out.println("Введите фамилию: ");
+        System.out.println("Введите фамилию "+numberAuthor+" автора: ");
         author.setLastname(scanner.nextLine());
         return author;
     }
@@ -47,8 +48,8 @@ public class BookManager {
             System.out.printf(i+1+". %s. ",b.getTitle());
             for (int j = 0; j < b.getAuthors().size(); j++) {
                 System.out.printf("%s %s. ",
-                        b.getAuthors().get(i).getFirstname(),
-                        b.getAuthors().get(i).getLastname());
+                        b.getAuthors().get(j).getFirstname(),
+                        b.getAuthors().get(j).getLastname());
                 }
                 System.out.println();
             }
