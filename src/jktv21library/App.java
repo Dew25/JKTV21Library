@@ -29,8 +29,10 @@ public class App {
     private final DataManager dataManager;
     private List<Book> books;
 //    private Book[] books;
-    private Reader[] readers;
-    private History[] histories;
+    private List<Reader> readers;
+    //private Reader[] readers;
+    private List<History> histories;
+//    private History[] histories;
 
     public App() {
         scanner = new Scanner(System.in);
@@ -72,12 +74,12 @@ public class App {
                     break;
                 case 2:
                     System.out.println("2. Добавить читателя");
-                    addReader(readerManager.createReader());
+                    readers.add(readerManager.createReader());
                     dataManager.saveReadersToFile(readers);
                     break;
                 case 3:
                     System.out.println("3. Выдать книгу");
-                    addHistories(historyManager.takeOnBook(readers,books));
+                    histories.add(historyManager.takeOnBook(readers, books));
                     dataManager.saveHistoriesToFile(histories);
                     break;
                 case 4:
@@ -119,14 +121,14 @@ public class App {
 //        books[books.length-1] = book;
 //    }
     
-    private void addReader(Reader reader) {
-        readers = Arrays.copyOf(readers, readers.length + 1);
-        readers[readers.length - 1] = reader;
-    }
-    private void addHistories(History history) {
-        histories = Arrays.copyOf(histories, histories.length + 1);
-        histories[histories.length - 1] = history;
-    }
+//    private void addReader(Reader reader) {
+//        readers = Arrays.copyOf(readers, readers.length + 1);
+//        readers[readers.length - 1] = reader;
+//    }
+//    private void addHistories(History history) {
+//        histories = Arrays.copyOf(histories, histories.length + 1);
+//        histories[histories.length - 1] = history;
+//    }
     
 //    private void testAddBook(){
 //        Book book = new Book();

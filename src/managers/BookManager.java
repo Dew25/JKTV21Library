@@ -109,6 +109,24 @@ public class BookManager {
                     }
                 }
             }
+            System.out.print("Изменить данные авторов?: ");
+            edit = scanner.nextLine();
+            if(edit.equals("y")){
+                System.out.println("Список авторов: ");
+                for (int i = 0; i < books.get(numBookForEdit - 1).getAuthors().size(); i++) {
+                    System.out.printf("%d. %s %s.%n"
+                            ,i+1
+                            ,books.get(numBookForEdit - 1).getAuthors().get(i).getFirstname()
+                            ,books.get(numBookForEdit - 1).getAuthors().get(i).getLastname()
+                    );
+                }
+                System.out.print("Выберите автора для редактирования:");
+                int numEditAuthor = scanner.nextInt(); scanner.nextLine();
+                System.out.print("Введите имя автора ("+numEditAuthor+"): ");
+                books.get(numBookForEdit-1).getAuthors().get(numEditAuthor-1).setFirstname(scanner.nextLine());
+                System.out.print("Введите фамилию автора ("+numEditAuthor+"): ");
+                books.get(numBookForEdit-1).getAuthors().get(numEditAuthor-1).setLastname(scanner.nextLine());
+            }
         }
         
         return books;

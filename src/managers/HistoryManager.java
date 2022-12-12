@@ -28,7 +28,7 @@ public class HistoryManager {
         bookManager = new BookManager();
     }
     
-    public History takeOnBook(Reader[] readers, List<Book>  books){
+    public History takeOnBook(List<Reader> readers, List<Book>  books){
         //из списка читателей выбрать номер читателя
         //из списка книг выбрать номер книги
         //инициировать поля History
@@ -44,15 +44,15 @@ public class HistoryManager {
         int numberBook = scanner.nextInt(); scanner.nextLine();
         History history = new History();
         history.setBook(books.get(numberBook - 1));
-        history.setReader(readers[numberReader - 1]);
+        history.setReader(readers.get(numberReader - 1));
         history.setTakeOnBook(new GregorianCalendar().getTime());
         return history;
     }
 
-    public void printListReadingBooks(History[] histories) {
+    public void printListReadingBooks(List<History> histories) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MMMM.yyyy");
-        for (int i = 0; i < histories.length; i++) {
-            History history = histories[i];
+        for (int i = 0; i < histories.size(); i++) {
+            History history = histories.get(i);
             if(history.getReturnBook() == null)
             System.out.printf("%d. %s. Выдана: %s г. Читает: %s %s. Телефон: %s%n"
                     ,i+1
@@ -66,14 +66,14 @@ public class HistoryManager {
         }
     }
 
-    public History[] returnBook(History[] histories) {
+    public List<History> returnBook(List<History> histories) {
         //выбрать номер истории с выданной книгой из списка
         //прописать дату возврата в историю
         System.out.println("Список выданных книг: ");
         this.printListReadingBooks(histories);
         System.out.println("Выберите номер возвращаемой книги из списка: ");
         int numberHistory = scanner.nextInt(); scanner.nextLine();
-        histories[numberHistory - 1].setReturnBook(new GregorianCalendar().getTime());
+        histories.get(numberHistory - 1).setReturnBook(new GregorianCalendar().getTime());
         return histories;
     }
 }
