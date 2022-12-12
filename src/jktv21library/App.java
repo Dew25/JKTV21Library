@@ -10,6 +10,7 @@ import entity.Book;
 import entity.History;
 import entity.Reader;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import managers.BookManager;
 import managers.DataManager;
@@ -26,7 +27,8 @@ public class App {
     private final ReaderManager readerManager;
     private final HistoryManager historyManager;
     private final DataManager dataManager;
-    private Book[] books;
+    private List<Book> books;
+//    private Book[] books;
     private Reader[] readers;
     private History[] histories;
 
@@ -65,7 +67,7 @@ public class App {
                     break;
                 case 1:
                     System.out.println("Выбрана задача: 1. Добавить книгу");
-                    addBook(bookManager.createBook());
+                    books.add(bookManager.createBook());
                     dataManager.saveBooksToFile(books);
                     break;
                 case 2:
@@ -112,10 +114,10 @@ public class App {
         System.out.println("Пока!");
     }
 
-    private void addBook(Book book){
-        books = Arrays.copyOf(books, books.length+1);
-        books[books.length-1] = book;
-    }
+//    private void addBook(Book book){
+//        books = Arrays.copyOf(books, books.length+1);
+//        books[books.length-1] = book;
+//    }
     
     private void addReader(Reader reader) {
         readers = Arrays.copyOf(readers, readers.length + 1);
@@ -126,19 +128,19 @@ public class App {
         histories[histories.length - 1] = history;
     }
     
-    private void testAddBook(){
-        Book book = new Book();
-        book.setTitle("Voina i mir");
-        Author author = new Author("Lev", "Tolstoy");
-        book.addAuthor(author);
-        this.books = Arrays.copyOf(this.books, this.books.length + 1);
-        this.books[this.books.length - 1] = book;
-    }
-    private void testAddReader(){
-        Reader reader = new Reader("Ivan", "Ivanov","56564567");
-        readers = Arrays.copyOf(readers, readers.length + 1);
-        readers[readers.length - 1] = reader;
-    }
+//    private void testAddBook(){
+//        Book book = new Book();
+//        book.setTitle("Voina i mir");
+//        Author author = new Author("Lev", "Tolstoy");
+//        book.addAuthor(author);
+//        this.books = Arrays.copyOf(this.books, this.books.length + 1);
+//        this.books[this.books.length - 1] = book;
+//    }
+//    private void testAddReader(){
+//        Reader reader = new Reader("Ivan", "Ivanov","56564567");
+//        readers = Arrays.copyOf(readers, readers.length + 1);
+//        readers[readers.length - 1] = reader;
+//    }
 
     
 
