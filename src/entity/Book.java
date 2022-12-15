@@ -10,14 +10,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Melnikov
  */
-
+@Entity
 public class Book implements Serializable{
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
+    @OneToMany
     private List<Author> authors = new ArrayList<>(); 
 
     public Book() {
@@ -28,7 +36,14 @@ public class Book implements Serializable{
         this.title = title;
         this.authors = authors;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public List<Author> getAuthors() {
         return authors;
     }
@@ -60,6 +75,8 @@ public class Book implements Serializable{
     public void removeAuthor(int indexRmAuthor){
         this.authors.remove(indexRmAuthor);
     }
+
+    
     
     
     
